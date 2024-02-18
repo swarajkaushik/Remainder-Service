@@ -3,9 +3,9 @@ const bodyParser = require("body-parser");
 const { PORT } = require("./config/serverConfig");
 const jobs = require("./utils/job");
 const TicketController = require("./controllers/ticket-controller");
-// const sendBasicEmail = require("../src/service/email-service");
+const { connectionChannel } = require("./utils/messageQueue");
 
-const setupAndRunServer = () => {
+const setupAndRunServer = async () => {
   const app = express();
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
